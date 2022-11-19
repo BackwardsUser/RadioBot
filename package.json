@@ -1,0 +1,21 @@
+{
+  "name": "radiobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon .",
+    "slash_deploy":  "node deploy.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/voice": "^0.13.0",
+    "discord.js": "^14.6.0",
+    "radio-garden-player": "^1.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
