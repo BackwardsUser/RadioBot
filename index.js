@@ -39,4 +39,4 @@ client.on(Events.InteractionCreate, async interaction => {
     };
 });
 
-client.login("ODY1Nzk3NTM1MzcyNjczMDc0.GhxpSQ.qX9fH2h98dxSfQVv73wcPLHvlLh0Ald5y8EHAQ");
+client.login(require("./config.json").token);
