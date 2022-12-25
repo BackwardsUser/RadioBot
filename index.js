@@ -2,8 +2,13 @@ const { Client, Events, GatewayIntentBits, SlashCommandBuilder, Collection } = r
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 const fs = require('fs');
 const path = require('path');
+const { modules } = require("./resources/scripts");
 
 client.once(Events.ClientReady, c => {
+    fs.readdirSync(path.join(__dirname, "queue")).forEach(file => {
+        var isEmpty = fs.readdirSync(path.join(__dirname, "queue", file))
+        if (!isEmpty.length > 0) fs.rmdirSync(path.join(__dirname, "queue", file));
+    })
     console.log(`Successfully Logged in as ${client.user.tag}`);
 });
 
@@ -24,6 +29,7 @@ for (const file of commandFiles) {
 };
 
 client.on(Events.InteractionCreate, async interaction => {
+    module.exports.interaction = interaction;
     if (!interaction.isChatInputCommand()) return;
     const command = interaction.client.commands.get(interaction.commandName);
     if (!command) {

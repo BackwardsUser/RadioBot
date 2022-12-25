@@ -10,6 +10,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	commands.push(command.data.toJSON());
+	console.log(`Successfully registered ${command.data.name}`)
 }
 
 // Construct and prepare an instance of the REST module
